@@ -136,7 +136,7 @@ function highlightLinks() {
 }
 
 function makeTextBigger() {
-    toggleFeature('makeTextBigger', 'bigger-text');
+    toggleFeature('makeTextBigger', 'bigger-text', 'makeTextBiggerToggleButton');
 }
 
 function alignTextLeft() {
@@ -144,7 +144,7 @@ function alignTextLeft() {
 }
 
 function makeCursorBigger() {
-    toggleFeature('makeCursorBigger', 'bigger-cursor');
+    toggleFeature('makeCursorBigger', 'bigger-cursor', 'makeCursorBiggerToggleButton');
 }
 
 function addReadingGuide() {
@@ -156,23 +156,23 @@ function addReadingMask() {
 }
 
 function setDyslexicFriendlyFont() {
-    toggleFeature('setDyslexicFriendlyFont', 'dyslexia-font');
+    toggleFeature('setDyslexicFriendlyFont', 'dyslexia-font', 'setDyslexicFriendlyFontToggleButton');
 }
 
 function toggleHighContrast() {
-    toggleFeature('toggleHighContrast', 'high-contrast');
+    toggleFeature('toggleHighContrast', 'high-contrast', 'highContrastToggleButton');
 }
 
 function desaturateColors() {
-    toggleFeature('desaturateColors', 'desaturate');
+    toggleFeature('desaturateColors', 'desaturate', 'desaturateColorsToggleButton');
 }
 
 function reduceSaturation() {
-    toggleFeature('reduceSaturation', 'low-saturation');
+    toggleFeature('reduceSaturation', 'low-saturation', 'reduceSaturationToggleButton');
 }
 
 function increaseSaturation() {
-    toggleFeature('increaseSaturation', 'high-saturation');
+    toggleFeature('increaseSaturation', 'high-saturation', 'increaseSaturationToggleButton');
 }
 
 function toggleMenu() {
