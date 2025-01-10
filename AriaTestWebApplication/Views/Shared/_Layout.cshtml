@@ -6,7 +6,10 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    @*<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">*@
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 
 
     <link href="~/Content/accessibility/accessibility.css" rel="stylesheet" />
@@ -14,30 +17,72 @@
 </head>
 <body>
 
-    @* Collapsible Accessibility Menu *@
-    <div id="accessibility-menu" style="position: fixed; bottom: 70px; right: 10px; background: #f4f4f4; padding: 10px; border: 1px solid #ccc; border-radius: 5px; z-index: 10000; display: none;">
-        <h4 style="margin-bottom: 10px;">Accessibility Features</h4>
-        <ul style="list-style: none; padding: 0; margin: 0;">
-            <li><button class="btn btn-primary btn-sm mb-2 w-100" onclick="enableScreenReader()"><i class="bi bi-headset"></i> Screen Reader</button></li>
-            <li><button class="btn btn-primary btn-sm mb-2 w-100" onclick="enableSelectedFieldReader()"><i class="bi bi-clipboard-check"></i> Selected Field Reader</button></li>
-            <li><button class="btn btn-primary btn-sm mb-2 w-100" onclick="highlightLinks()"><i class="bi bi-link"></i> Highlight Links</button></li>
-            <li><button class="btn btn-primary btn-sm mb-2 w-100" onclick="makeTextBigger()"><i class="bi bi-fonts"></i> Bigger Text</button></li>
-            <li><button class="btn btn-primary btn-sm mb-2 w-100" onclick="alignTextLeft()"><i class="bi bi-text-left"></i> Text Alignment</button></li>
-            <li><button class="btn btn-primary btn-sm mb-2 w-100" onclick="makeCursorBigger()"><i class="bi bi-cursor-fill"></i> Bigger Cursor</button></li>
-            <li><button class="btn btn-primary btn-sm mb-2 w-100" onclick="addReadingGuide()"><i class="bi bi-eye"></i> Reading Guide</button></li>
-            <li><button class="btn btn-primary btn-sm mb-2 w-100" onclick="addReadingMask()"><i class="bi bi-box"></i> Reading Mask</button></li>
-            <li><button class="btn btn-primary btn-sm mb-2 w-100" onclick="setDyslexicFriendlyFont()"><i class="bi bi-type"></i> Dyslexia Friendly</button></li>
-            <li><button class="btn btn-primary btn-sm mb-2 w-100" onclick="toggleHighContrast()"><i class="bi bi-palette"></i> High Contrast</button></li>
-            <li><button class="btn btn-primary btn-sm mb-2 w-100" onclick="desaturateColors()"><i class="bi bi-droplet-half"></i> Desaturate</button></li>
-            <li><button class="btn btn-primary btn-sm mb-2 w-100" onclick="reduceSaturation()"><i class="bi bi-droplet"></i> Low Saturation</button></li>
-            <li><button class="btn btn-primary btn-sm w-100" onclick="increaseSaturation()"><i class="bi bi-droplet-fill"></i> High Saturation</button></li>
+    <div class="reading-guide"></div>
+    <div class="reading-mask"></div>
+
+    <div class="menu-container">
+        <button class="menu-button" onclick="toggleMenu()">
+            <i class="bi bi-list"></i>
+        </button>
+        <ul class="menu">
+            <li><button id="screenReaderToggleButton" class="btn btn-passive" onclick="enableScreenReader()"><i class="bi bi-headset"></i> Screen Reader</button></li>
+            <li><button id="selectedFieldReaderToggleButton" class="btn btn-passive" onclick="enableSelectedFieldReader()"><i class="bi bi-clipboard-check"></i> Selected Field Reader</button></li>
+            <li><button id="highlightLinksToggleButton" class="btn btn-passive" onclick="highlightLinks()"><i class="bi bi-link"></i> Highlight Links</button></li>
+            <li><button class="btn btn-passive" onclick="makeTextBigger()"><i class="bi bi-fonts"></i> Bigger Text</button></li>
+            <li><button class="btn btn-passive" onclick="alignTextLeft()"><i class="bi bi-text-left"></i> Text Alignment</button></li>
+            <li><button class="btn btn-passive" onclick="makeCursorBigger()"><i class="bi bi-cursor-fill"></i> Bigger Cursor</button></li>
+            <li><button class="btn btn-passive" onclick="addReadingGuide()"><i class="bi bi-eye"></i> Reading Guide</button></li>
+            <li><button class="btn btn-passive" onclick="addReadingMask()"><i class="bi bi-box"></i> Reading Mask</button></li>
+            <li><button class="btn btn-passive" onclick="setDyslexicFriendlyFont()"><i class="bi bi-type"></i> Dyslexia Friendly</button></li>
+            <li><button class="btn btn-passive" onclick="toggleHighContrast()"><i class="bi bi-palette"></i> High Contrast</button></li>
+            <li><button class="btn btn-passive" onclick="desaturateColors()"><i class="bi bi-droplet-half"></i> Desaturate</button></li>
+            <li><button class="btn btn-passive" onclick="reduceSaturation()"><i class="bi bi-droplet"></i> Low Saturation</button></li>
+            <li><button class="btn btn-passive" onclick="increaseSaturation()"><i class="bi bi-droplet-fill"></i> High Saturation</button></li>
         </ul>
     </div>
 
+    @*<div class="menu">
+            <ul style="list-style: none; padding: 0; margin: 0;">
+                <li><button class="btn btn-primary btn-sm mb-2 w-100" onclick="enableScreenReader()"><i class="bi bi-headset"></i> Screen Reader</button></li>
+                <li><button class="btn btn-primary btn-sm mb-2 w-100" onclick="enableSelectedFieldReader()"><i class="bi bi-clipboard-check"></i> Selected Field Reader</button></li>
+                <li><button class="btn btn-primary btn-sm mb-2 w-100" onclick="highlightLinks()"><i class="bi bi-link"></i> Highlight Links</button></li>
+                <li><button class="btn btn-primary btn-sm mb-2 w-100" onclick="makeTextBigger()"><i class="bi bi-fonts"></i> Bigger Text</button></li>
+                <li><button class="btn btn-primary btn-sm mb-2 w-100" onclick="alignTextLeft()"><i class="bi bi-text-left"></i> Text Alignment</button></li>
+                <li><button class="btn btn-primary btn-sm mb-2 w-100" onclick="makeCursorBigger()"><i class="bi bi-cursor-fill"></i> Bigger Cursor</button></li>
+                <li><button class="btn btn-primary btn-sm mb-2 w-100" onclick="addReadingGuide()"><i class="bi bi-eye"></i> Reading Guide</button></li>
+                <li><button class="btn btn-primary btn-sm mb-2 w-100" onclick="addReadingMask()"><i class="bi bi-box"></i> Reading Mask</button></li>
+                <li><button class="btn btn-primary btn-sm mb-2 w-100" onclick="setDyslexicFriendlyFont()"><i class="bi bi-type"></i> Dyslexia Friendly</button></li>
+                <li><button class="btn btn-primary btn-sm mb-2 w-100" onclick="toggleHighContrast()"><i class="bi bi-palette"></i> High Contrast</button></li>
+                <li><button class="btn btn-primary btn-sm mb-2 w-100" onclick="desaturateColors()"><i class="bi bi-droplet-half"></i> Desaturate</button></li>
+                <li><button class="btn btn-primary btn-sm mb-2 w-100" onclick="reduceSaturation()"><i class="bi bi-droplet"></i> Low Saturation</button></li>
+                <li><button class="btn btn-primary btn-sm mb-2 w-100" onclick="increaseSaturation()"><i class="bi bi-droplet-fill"></i> High Saturation</button></li>
+            </ul>
+        </div>*@
+
+    @* Collapsible Accessibility Menu *@
+    @*<div id="accessibility-menu" style="position: fixed; bottom: 70px; right: 10px; background: #f4f4f4; padding: 10px; border: 1px solid #ccc; border-radius: 5px; z-index: 10000; display: none;">
+            <h4 style="margin-bottom: 10px;">Accessibility Features</h4>
+            <ul style="list-style: none; padding: 0; margin: 0;">
+                <li><button class="btn btn-primary btn-sm mb-2 w-100" onclick="enableScreenReader()"><i class="bi bi-headset"></i> Screen Reader</button></li>
+                <li><button class="btn btn-primary btn-sm mb-2 w-100" onclick="enableSelectedFieldReader()"><i class="bi bi-clipboard-check"></i> Selected Field Reader</button></li>
+                <li><button class="btn btn-primary btn-sm mb-2 w-100" onclick="highlightLinks()"><i class="bi bi-link"></i> Highlight Links</button></li>
+                <li><button class="btn btn-primary btn-sm mb-2 w-100" onclick="makeTextBigger()"><i class="bi bi-fonts"></i> Bigger Text</button></li>
+                <li><button class="btn btn-primary btn-sm mb-2 w-100" onclick="alignTextLeft()"><i class="bi bi-text-left"></i> Text Alignment</button></li>
+                <li><button class="btn btn-primary btn-sm mb-2 w-100" onclick="makeCursorBigger()"><i class="bi bi-cursor-fill"></i> Bigger Cursor</button></li>
+                <li><button class="btn btn-primary btn-sm mb-2 w-100" onclick="addReadingGuide()"><i class="bi bi-eye"></i> Reading Guide</button></li>
+                <li><button class="btn btn-primary btn-sm mb-2 w-100" onclick="addReadingMask()"><i class="bi bi-box"></i> Reading Mask</button></li>
+                <li><button class="btn btn-primary btn-sm mb-2 w-100" onclick="setDyslexicFriendlyFont()"><i class="bi bi-type"></i> Dyslexia Friendly</button></li>
+                <li><button class="btn btn-primary btn-sm mb-2 w-100" onclick="toggleHighContrast()"><i class="bi bi-palette"></i> High Contrast</button></li>
+                <li><button class="btn btn-primary btn-sm mb-2 w-100" onclick="desaturateColors()"><i class="bi bi-droplet-half"></i> Desaturate</button></li>
+                <li><button class="btn btn-primary btn-sm mb-2 w-100" onclick="reduceSaturation()"><i class="bi bi-droplet"></i> Low Saturation</button></li>
+                <li><button class="btn btn-primary btn-sm w-100" onclick="increaseSaturation()"><i class="bi bi-droplet-fill"></i> High Saturation</button></li>
+            </ul>
+        </div>*@
+
     @* Menu Toggle Icon *@
-    <div id="menu-toggle" style="position: fixed; bottom: 10px; right: 10px; background: #007bff; padding: 10px; border-radius: 50%; cursor: pointer; z-index: 10001;">
-        <i class="bi bi-list text-white" style="font-size: 1.5rem;"></i>
-    </div>
+    @*<div id="menu-toggle" style="position: fixed; bottom: 10px; right: 10px; background: #007bff; padding: 10px; border-radius: 50%; cursor: pointer; z-index: 10001;">
+            <i class="bi bi-list text-white" style="font-size: 1.5rem;"></i>
+        </div>*@
 
 
     @*Collapsible Accessibility Menu*@
