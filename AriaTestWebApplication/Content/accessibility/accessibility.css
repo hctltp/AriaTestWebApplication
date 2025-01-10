@@ -1,0 +1,46 @@
+﻿/*#accessibility-menu button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    font-size: 14px;
+}
+
+#menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+}
+
+    #menu-toggle i {
+        font-size: 1.5rem;
+    }*/
+
+
+#accessibility-menu h4 {
+    font-size: 16px;
+    color: #333;
+    text-align: center;
+}
+
+#accessibility-menu button {
+    font-size: 14px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+}
+
+    #menu-toggle i {
+        font-size: 1.5rem;
+    }
